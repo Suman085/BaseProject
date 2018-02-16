@@ -1,10 +1,9 @@
-package com.mic.rims.mvp;
+package com.mic.rims.mvp
 
 /**
- * @author ishan
- * @since 19/05/16
+ * @author suman
  */
-public interface MVPView {
+interface MVPView {
 
     /**
      * Should be called when a time taking process starts and we want the user
@@ -15,13 +14,13 @@ public interface MVPView {
      * For example: a network request to the API is made for authenticating
      * the user.
      */
-    void showProgress();
+    fun showProgress()
 
 
     /**
      * Should be called when a time taking process ends and we have some result
      * for the user.
      */
-    void hideProgress();
+    fun hideProgress()
 
 }

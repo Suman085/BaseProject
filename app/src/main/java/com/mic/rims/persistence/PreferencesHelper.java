@@ -21,6 +21,7 @@ public class PreferencesHelper {
     private static final String TOKEN = "preferences_token";
     private static final String USER_NAME = "preferences_user_name";
     private static final String IS_FIRST_TIME = "preferences_is_first_time";
+    private static final String IS_LOGGED_IN = "preferences_is_logged_in";
     private Context context;
     private SharedPreferences sharedPreferences;
 
@@ -93,6 +94,14 @@ public class PreferencesHelper {
 
     public void setUserId(long id) {
         putLong(USER_ID, id);
+    }
+
+    public boolean isLoggedIn() {
+        return getBoolean(IS_LOGGED_IN, false);
+    }
+
+    public void setIsLoggedIn(boolean isLoggedIn) {
+        putBoolean(IS_LOGGED_IN, isLoggedIn);
     }
 
 

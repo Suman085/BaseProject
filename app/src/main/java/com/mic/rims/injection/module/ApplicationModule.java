@@ -6,6 +6,7 @@ import android.content.Context;
 
 import com.mic.rims.api.BaseApiManager;
 import com.mic.rims.injection.ApplicationContext;
+import com.mic.rims.persistence.DatabaseHelper;
 import com.mic.rims.persistence.PreferencesHelper;
 
 import javax.inject.Singleton;
@@ -48,4 +49,12 @@ public class ApplicationModule {
     BaseApiManager provideBaseApiManager() {
         return new BaseApiManager();
     }
+
+    @Provides
+    @Singleton
+    DatabaseHelper provideDatabaseHelper() {
+        return new DatabaseHelper();
+    }
+
+
 }

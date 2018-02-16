@@ -11,4 +11,5 @@ interface LoginView : MVPView {
     fun showPasswordError(string: String?,field: String?)
     fun onSuccessLogin(user: User)
     fun onFailureLogin(message: String?)
+    fun gotoMainActivity()
 }

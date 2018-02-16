@@ -1,7 +1,7 @@
 package com.mic.rims.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import com.mic.rims.R
 import com.mic.rims.base.BaseActivity
 import com.mic.rims.mvp.model.User
@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
 class LoginActivity : BaseActivity(), LoginView {
+
+
     @Inject lateinit var presenter: LoginPresenter
     private lateinit var progressBarHandler: ProgressBarHandler
 
@@ -21,6 +23,7 @@ class LoginActivity : BaseActivity(), LoginView {
         getActivityComponent().inject(this)
         progressBarHandler = ProgressBarHandler(this)
         presenter.attachView(this)
+        presenter.checkIsLoggedIn()
         login.setOnClickListener {
             presenter.login(username.text.toString().trim(), password.text.toString())
         }
@@ -31,13 +34,12 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     private fun showError(string: String?, field: String?) {
-        Snackbar.make(container, field + " " + string, Snackbar.LENGTH_SHORT).show()
+        showSnackBar(container,field+" "+string)
     }
 
     override fun showPasswordError(string: String?, field: String?) {
         showError(string, field)
     }
-
 
     override fun showProgress() {
         progressBarHandler.show()
@@ -48,10 +50,21 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     override fun onSuccessLogin(user: User) {
-        Snackbar.make(container, user.name, Snackbar.LENGTH_SHORT).show()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     override fun onFailureLogin(message: String?) {
-        Snackbar.make(container, message.toString() + "", Snackbar.LENGTH_SHORT).show()
+        showSnackBar(container,message.toString())
+    }
+
+    override fun gotoMainActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.detachView()
     }
 }
