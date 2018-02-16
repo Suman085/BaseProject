@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Rims</string>
+    <string name="language_type" translatable="false">language_type</string>
+    <string name="working">Working</string>
+    <string name="error_validation_blank">cannot be empty</string>
+    <string name="username">Username</string>
+    <string name="error_validation_minimum_chars">should be atleast 4 character</string>
+    <string name="error_validation_cannot_contain_spaces">cannot contain space.</string>
+    <string name="password">Password</string>
+</resources>
