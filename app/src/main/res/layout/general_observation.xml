@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="@dimen/margin"
+            style="@style/TitleText"
+            android:text="Access road" />
+
+        <Spinner
+            android:id="@+id/et_nagarpalika"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            android:entries="@array/occupations"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="@dimen/margin"
+            style="@style/TitleText"
+            android:text="Risk to other hazards" />
+
+        <Spinner
+            android:id="@+id/sp_risk_to_other_hazards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            android:entries="@array/occupations"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <com.mic.rims.ui.custom.QuestionnaireView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:question="Construction progress"
+            android:layout_margin="8dp"
+            android:padding="4dp"
+            app:answer="@array/construction_status"
+            android:id="@+id/qv_construction_status"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click the below images"
+            android:layout_marginStart="16dp"
+            style="@style/TitleText"
+            android:layout_marginLeft="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="4dp"
+                android:padding="8dp"
+                android:background="@drawable/circular_shape"
+                android:id="@+id/ll_beneficiary_image"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/iv_beneficiary_image"
+                    android:src="@drawable/ic_account_" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_margin="@dimen/margin"
+                    android:text="Beneficiary Image" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="4dp"
+                android:padding="8dp"
+                android:id="@+id/ll_existing_house_image"
+                android:gravity="center_horizontal"
+                android:background="@drawable/circular_shape"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/iv_house_image"
+                    android:src="@drawable/ic_store_" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:textStyle="bold"
+                    android:text="Existing house image" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ll_nissa_card"
+                android:padding="8dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/circular_shape"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/iv_nissa_card"
+                    android:src="@drawable/ic_card_nissa_black_24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:textStyle="bold"
+                    android:text="Nissa card" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ll_red_card"
+                android:layout_marginLeft="4dp"
+                android:padding="8dp"
+                android:background="@drawable/circular_shape"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/iv_red_card"
+                    android:src="@drawable/ic_card_nissa_black_24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:textStyle="bold"
+                    android:text="Red card" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            style="@style/ButtonStyle"
+            android:layout_margin="@dimen/margin"
+            android:id="@+id/btn_next"
+            android:text="Next" />
+    </LinearLayout>
+</ScrollView>

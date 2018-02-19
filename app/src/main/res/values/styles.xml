@@ -7,5 +7,22 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="CardStyleQuestion" parent="android:Widget.Holo.Light">
+        <item name="android:padding">@dimen/margin</item>
+        <item name="android:background">@color/cardview_light_background</item>
+    </style>
+    <style name="TitleText">
+        <item name="android:textSize">@dimen/question_title</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="ButtonStyle">
+        <item name="android:radius">2dp</item>
+        <item name="android:height">36dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
 
 </resources>

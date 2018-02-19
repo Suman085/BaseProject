@@ -7,4 +7,42 @@
     <string name="error_validation_minimum_chars">should be atleast 4 character</string>
     <string name="error_validation_cannot_contain_spaces">cannot contain space.</string>
     <string name="password">Password</string>
+
+
+    <array name="gender">
+        <item>MALE</item>
+        <item>FEMALE</item>
+        <item>OTHER</item>
+    </array>
+    <array name="yes_no">
+        <item>Yes</item>
+        <item>No</item>
+    </array>
+    <array name="ethnicity">
+        <item>Ethnicity</item>
+        <item>Hill Brahman/Chhetri</item>
+        <item>Hill Dalits</item>
+        <item>Hill Janajatis</item>
+        <item>Madhesi/Tarai Brahman/Chhetri</item>
+        <item>Madhesi/Tarai Dalits</item>
+        <item>Muslims</item>
+        <item>Other Madhesi Caste Groups</item>
+        <item>Tarai/Madhesi Janajatis</item>
+    </array>
+    <array name="construction_status">
+        <item>Construction on progress/started</item>
+        <item>Construction not started</item>
+    </array>
+    <array name="occupations">
+        <item>Select an Occupation</item>
+        <item>Farmer (krishak)</item>
+        <item>Herder (pasupalan)</item>
+        <item>Trader (byaapaari)</item>
+        <item>Wage worker (majdoor)</item>
+        <item>Skill worker (dakarmi, shikarmi, plumber etc)</item>
+        <item>Service holder (nokari)</item>
+        <item>Shop keeper (pasale)</item>
+        <item>Lodge/Tea shop owner (lodge wa chayapasalwala)</item>
+        <item>Others</item>
+    </array>
 </resources>

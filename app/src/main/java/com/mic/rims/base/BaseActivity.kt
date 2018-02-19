@@ -1,10 +1,16 @@
 package com.mic.rims.base
 
+import android.Manifest
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
@@ -14,9 +20,11 @@ import android.widget.Toast
 import com.mic.rims.MyApplication
 import com.mic.rims.R
 import com.mic.rims.callbacks.BaseActivityCallback
+import com.mic.rims.callbacks.PermissionCallback
 import com.mic.rims.injection.component.ActivityComponent
 import com.mic.rims.injection.component.DaggerActivityComponent
 import com.mic.rims.injection.module.ActivityModule
+import com.mic.rims.utils.Constants
 import com.mic.rims.utils.LanguageHelper
 
 /**
@@ -25,13 +33,14 @@ import com.mic.rims.utils.LanguageHelper
  */
 
 open class BaseActivity : AppCompatActivity(), BaseActivityCallback {
-
     /**
      * @return Returns toolbar linked with current activity
      */
     var toolbar: Toolbar? = null
         protected set
+
     private var activityComponent: ActivityComponent? = null
+    private var permissionCallback: PermissionCallback?=null
 
 
     override fun setContentView(layoutResID: Int) {
@@ -108,8 +117,8 @@ open class BaseActivity : AppCompatActivity(), BaseActivityCallback {
         Toast.makeText(this@BaseActivity, message, toastType).show()
     }
 
-    fun showSnackBar(view:View,message: String,snackbarType:Int=Snackbar.LENGTH_SHORT){
-        Snackbar.make(view,message,snackbarType)
+    fun showSnackBar(view: View, message: String, snackbarType: Int = Snackbar.LENGTH_SHORT) {
+        Snackbar.make(view, message, snackbarType)
     }
 
 
@@ -191,6 +200,57 @@ open class BaseActivity : AppCompatActivity(), BaseActivityCallback {
         builder.setCancelable(false)
         builder.show()
     }
+
+
+    fun checkPermission(permission: String, permissionCallback: PermissionCallback){
+        this.permissionCallback=permissionCallback
+        if(isPermissionGranted(permission)){
+            permissionCallback.onPermissionGranted()
+        }else if(shouldShowPermissionRational(permission)){
+            permissionCallback.onShouldShowPermissionRationale()
+        }else {
+            requestPermission(permission)
+        }
+    }
+
+    private fun isPermissionGranted(permission: String) = ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+
+    private fun shouldShowPermissionRational(permission: String)=ActivityCompat.shouldShowRequestPermissionRationale(this, permission)
+
+    private fun requestPermission(permission: String) = ActivityCompat.requestPermissions(this, arrayOf(permission), Constants.REQUEST_PERMISSION_CODE)
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode==Constants.REQUEST_PERMISSION_CODE){
+            if(grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                permissionCallback?.onPermissionGranted()
+            }else if(grantResults[0]==PackageManager.PERMISSION_DENIED){
+                permissionCallback?.onPermissionDenied()
+            }
+        }
+    }
+
+    protected fun showAlertForPermission(permission: String,rationaleMessage:String) {
+        val alertDialog = AlertDialog.Builder(this).create()
+        alertDialog.setTitle("Alert")
+        alertDialog.setMessage(rationaleMessage)
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "DONT ALLOW"
+        ) { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "ALLOW",{dialog: DialogInterface?, which: Int ->
+            dialog!!.dismiss()
+            ActivityCompat.requestPermissions(this,
+                    arrayOf(permission),
+                    Constants.REQUEST_PERMISSION_CODE)
+
+        })
+        alertDialog.show()
+    }
+
+
 }
 /**
  * Displays a toast in current activity. In this method the duration
