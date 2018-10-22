@@ -5,13 +5,13 @@
     android:padding="15dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.mic.rims.ui.custom.QuestionnaireView
+    <com.mic.debrismanagement.ui.custom.QuestionnaireView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin"
         app:question="Have you received your first tranche?"
         app:answer="@array/yes_no"/>
-    <com.mic.rims.ui.custom.QuestionnaireView
+    <com.mic.debrismanagement.ui.custom.QuestionnaireView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:question="Do you have plans to reconstruct house in same location?"

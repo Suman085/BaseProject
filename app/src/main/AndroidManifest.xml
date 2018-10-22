@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.mic.rims">
+    package="com.mic.debrismanagement">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
-        android:name=".MyApplication"
+        android:name="com.mic.debrismanagement.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,22 +20,20 @@
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
-            android:grantUriPermissions="true"
-            tools:replace="android:authorities">
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_path"
-                tools:replace="android:resource"/>
+                android:resource="@xml/file_path" />
         </provider>
-        <activity android:name=".ui.activities.MainActivity"></activity>
-        <activity android:name=".ui.activities.LoginActivity">
+        <activity android:name="com.mic.debrismanagement.ui.activities.MainActivity"></activity>
+        <activity android:name="com.mic.debrismanagement.ui.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.SurveyActivity"></activity>
+        <activity android:name="com.mic.debrismanagement.ui.activities.SurveyActivity"></activity>
     </application>
 
 </manifest>

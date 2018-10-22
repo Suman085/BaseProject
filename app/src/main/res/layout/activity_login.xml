@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:id="@+id/container"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.mic.rims.ui.activities.LoginActivity">
+    tools:context="com.mic.debrismanagement.ui.activities.LoginActivity">
 
     <include layout="@layout/toolbar"/>
 
